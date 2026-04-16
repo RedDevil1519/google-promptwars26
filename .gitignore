@@ -137,3 +137,32 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Dependencies
+node_modules/
+.venv/
+venv/
+env/
+dist/
+build/
+
+# Python artifacts
+pycache/
+*.py[cod]
+*$py.class
+
+# Antigravity artifacts (Ignore massive local caches)
+.antigravity/
+artifacts/
+recordings/
+*.webp
+*.mp4
+
+# Secrets
+.env
+.env.local
+.secrets
+
+# OS files
+.DS_Store
+Thumbs.db
