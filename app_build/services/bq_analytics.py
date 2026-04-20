@@ -1,4 +1,5 @@
 import os
+import asyncio
 import logging
 from google.cloud import bigquery
 
@@ -28,8 +29,14 @@ async def log_event(event_name: str, payload: dict):
         logger.warning(f"BigQuery client not available. Event '{event_name}' not logged.")
         return
         
-    # In a full implementation, you would write this to a specific dataset.table
-    # e.g. table_id = f"{project_id}.analytics.events"
-    # client.insert_rows_json(table_id, [{"event": event_name, **payload}])
+    project_id = os.environ.get("GOOGLE_CLOUD_PROJECT", "your-project-id")
+    table_id = f"{project_id}.analytics.events"
     
-    logger.info(f"BigQuery Event Logged (simulated insert): {event_name} - {payload}")
+    def _insert():
+        try:
+            client.insert_rows_json(table_id, [{"event": event_name, **payload}])
+            logger.info(f"BigQuery Event Logged (insert): {event_name} - {payload}")
+        except Exception as e:
+            logger.error(f"Failed to insert to BigQuery: {e}")
+
+    await asyncio.to_thread(_insert)

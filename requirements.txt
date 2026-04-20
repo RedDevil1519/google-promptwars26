@@ -4,3 +4,5 @@ google-cloud-aiplatform>=1.30.0
 google-cloud-bigquery>=3.11.0
 SQLAlchemy>=2.0.0
 python-dotenv>=1.0.0
+pytest>=7.4.0
+httpx>=0.25.0

@@ -1,4 +1,5 @@
 import os
+import asyncio
 import logging
 from sqlalchemy import create_engine, Column, Integer, String, Text
 from sqlalchemy.orm import declarative_base, sessionmaker
@@ -40,13 +41,16 @@ async def save_chat_history(user_msg: str, bot_reply: str):
     if _SessionLocal is None:
         init_db()
         
-    db = _SessionLocal()
-    try:
-        record = ChatRecord(user_message=user_msg, bot_reply=bot_reply)
-        db.add(record)
-        db.commit()
-    except Exception as e:
-        logger.error(f"Failed to save chat to DB: {str(e)}")
-        db.rollback()
-    finally:
-        db.close()
+    def _save():
+        db = _SessionLocal()
+        try:
+            record = ChatRecord(user_message=user_msg, bot_reply=bot_reply)
+            db.add(record)
+            db.commit()
+        except Exception as e:
+            logger.error(f"Failed to save chat to DB: {str(e)}")
+            db.rollback()
+        finally:
+            db.close()
+
+    await asyncio.to_thread(_save)

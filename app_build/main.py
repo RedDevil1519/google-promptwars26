@@ -38,8 +38,8 @@ async def chat_endpoint(request: ChatRequest):
         bot_reply = await generate_response(user_message)
         
         # In a complete implementation, we sink this to Cloud SQL and BigQuery
-        # await save_chat_history(user_message, bot_reply)
-        # await log_event("chat_interaction", {"message_length": len(user_message)})
+        await save_chat_history(user_message, bot_reply)
+        await log_event("chat_interaction", {"message_length": len(user_message)})
         
         return ChatResponse(reply=bot_reply)
         
