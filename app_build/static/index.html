@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Cloud AI Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>AI Assistant</h1>
+            <p>Powered by Vertex AI</p>
+        </header>
+
+        <main class="chat-window">
+            <div id="chat-history" class="chat-history">
+                <div class="message bot-message">
+                    Hello! I'm your AI assistant. How can I help you today?
+                </div>
+            </div>
+            
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Type your message here..." autofocus />
+                <button id="send-btn">Send</button>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

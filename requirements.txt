@@ -1,0 +1,6 @@
+fastapi>=0.100.0
+uvicorn>=0.23.0
+google-cloud-aiplatform>=1.30.0
+google-cloud-bigquery>=3.11.0
+SQLAlchemy>=2.0.0
+python-dotenv>=1.0.0

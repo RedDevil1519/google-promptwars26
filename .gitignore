@@ -334,8 +334,4 @@ recordings/
 
 # OS files
 .DS_Store
-<<<<<<< HEAD
->>>>>>> a2cd49d (Initial commit for google-promptwars26)
-=======
->>>>>>> a2cd49dd804ef01ae63e6a40ed5abdef089751f4
 Thumbs.db
