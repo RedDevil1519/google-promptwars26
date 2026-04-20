@@ -63,5 +63,8 @@ async def generate_response(user_message: str) -> str:
         response = chat.send_message(user_message)
         return str(response.text)
     except Exception as e:
+        error_msg = str(e).lower()
+        if "billing" in error_msg or "403" in error_msg or "permissiondenied" in error_msg:
+            return f"[BILLING DISABLED - Fallback Mode] I received your message: '{user_message}'. I am temporarily returning this fallback because Vertex AI requires an active Google Cloud Billing account associated with your project."
         # Add basic abstraction over the exception; avoid leaking credentials
         raise RuntimeError(f"Vertex AI interaction failed: {str(e)}")
