@@ -122,6 +122,11 @@ button:hover {
     background-color: #3182ce;
 }
 
+button:focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 2px;
+}
+
 button:disabled {
     background-color: #30363d;
     color: #8b949e;
