@@ -15,7 +15,7 @@ The project follows a robust modular execution pipeline located entirely in the 
 - **Backend API (`app_build/main.py`):** An asynchronous FastAPI instance processes incoming JSON data streams. 
 - **Google Cloud Services Integration:** 
   - **Vertex AI (`vertex_llm.py`):** Acts as the primary brain processing the user interactions dynamically.
-  - **Cloud SQL (`db_client.py`):** Leverages SQLAlchemy async engines to securely commit chat histories to a relational database for persistance.
+  - **Cloud SQL (`db_client.py`):** Leverages SQLAlchemy async engines to securely commit chat histories to a relational database for persistence.
   - **BigQuery (`bq_analytics.py`):** Sinks usage event telemetry for real-time traffic analysis.
 
 ## Any Assumptions Made
